@@ -1,201 +1,87 @@
-# 🚀 Customer Churn Analytics & Retention Intelligence Platform
+# 🧠 Customer Churn Prediction & Retention Strategy using SQL, ML & Power BI
 
-An end-to-end Data Science project designed to identify customers at risk of churning, uncover key drivers behind customer attrition, and provide actionable retention strategies through machine learning, SQL analytics, and interactive Power BI dashboards.
-
----
-
-## 📌 Business Problem
-
-Customer retention is one of the most critical challenges for subscription-based businesses. Acquiring a new customer is significantly more expensive than retaining an existing one.
-
-This project helps organizations:
-
-- Predict which customers are likely to churn
-- Understand factors contributing to churn
-- Segment customers based on risk
-- Design targeted retention campaigns
-- Support data-driven decision making through dashboards
+This project is an end-to-end solution to identify customers likely to churn and recommend retention strategies. It leverages SQL for data retrieval, machine learning for prediction, and Power BI for rich, interactive visualizations.
 
 ---
 
-## 🎯 Project Objectives
+## 🚀 Project Highlights
 
-- Analyze customer demographics, service usage, and account information.
-- Build machine learning models to predict customer churn.
-- Identify key churn drivers using explainable AI techniques.
-- Generate actionable business insights for customer retention.
-- Create executive-level dashboards for monitoring churn trends and KPIs.
-
----
-
-## 🏗️ Solution Architecture
-
-text SQL Server Database         │         ▼  Data Extraction  (SQL Views)         │         ▼  Data Cleaning & EDA         │         ▼  Feature Engineering         │         ▼  SMOTE Balancing         │         ▼  Model Training         │         ▼  Churn Prediction         │         ▼  Power BI Dashboard         │         ▼  Business Insights & Retention Strategy 
+- 💾 Data ingested from SQL Server views (`vw_ChurnData`, `vw_JoinData`)
+- ⚙️ Data preprocessing and SMOTE balancing for class imbalance
+- 🧪 GridSearchCV-based hyperparameter tuning across 5 models
+- 📈 MLflow used for logging experiments, performance, and LIME explanations
+- 📊 Final churn prediction integrated with Power BI for business insights
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)
+## 🔍 Objective
 
-Performed comprehensive analysis to understand customer behavior and churn patterns:
-
-- Missing value analysis
-- Customer demographics analysis
-- Service usage trends
-- Contract type comparison
-- Monthly charges distribution
-- Churn rate by customer segments
-- Correlation analysis
-
-### Key Insights
-
-- Customers with month-to-month contracts showed significantly higher churn rates.
-- Higher monthly charges correlated with increased churn probability.
-- Long-term customers demonstrated stronger retention.
-- Customers with multiple subscribed services were less likely to churn.
+Predict churn probability for telecom customers and analyze churn patterns based on demographic, behavioral, and service usage features.
 
 ---
 
-## 🤖 Machine Learning Pipeline
+## 🧱 Machine Learning Models
 
-### Data Preprocessing
+Models trained with both **imbalanced** and **SMOTE-balanced** datasets:
 
-- Missing value treatment
-- Feature encoding
-- Feature scaling
-- Data balancing using SMOTE
-- Train-test split
-
-### Models Evaluated
-
-| Model | Purpose |
-|---------|---------|
-| Logistic Regression | Baseline model |
-| Random Forest | Ensemble learning |
-| XGBoost | Gradient boosting |
-| LightGBM | High-performance boosting |
-| K-Nearest Neighbors | Distance-based classification |
-
----
-
-## 🏆 Best Performing Model
-
-### LightGBM (Balanced Dataset)
-
-Performance Metrics:
-
-- Precision: 0.90
-- Recall: 0.89
-- F1 Score: 0.90
-
-The LightGBM model achieved the best balance between precision and recall, making it suitable for identifying potential churners while minimizing false positives.
-
----
-
-## 🔬 Experiment Tracking
-
-MLflow was used to:
-
-- Track model experiments
-- Compare model performance
-- Store hyperparameters
-- Monitor evaluation metrics
-- Log feature importance explanations
-
----
-
-## 🧠 Explainable AI
-
-LIME (Local Interpretable Model-Agnostic Explanations) was used to explain individual churn predictions.
-
-This helped identify:
-
-- Why a customer was predicted to churn
-- Which features influenced the prediction most
-- Potential retention opportunities
-
----
-
-## 📈 Power BI Dashboard
-
-The Power BI dashboard provides:
-
-### Executive Summary Dashboard
-
-- Total Customers
-- Churn Rate
-- Revenue Impact
-- Customer Segmentation
-- Service Utilization Analysis
-
-### Churn Prediction Dashboard
-
-- High-Risk Customer Identification
-- Predicted Churn Probability
-- Customer-Level Insights
-- Retention Opportunity Analysis
-
----
-
-## 💡 Business Recommendations
-
-Based on model findings:
-
-### High-Risk Customers
-
-- Offer personalized discounts
-- Launch targeted retention campaigns
-- Provide loyalty rewards
-
-### Contract Optimization
-
-- Encourage migration from month-to-month contracts to long-term plans
-
-### Revenue Protection
-
-- Prioritize outreach to high-value customers with elevated churn risk
-
----
-
-## 🛠️ Technology Stack
-
-### Data Engineering
-- SQL Server
-- SQL Views
-- ETL Workflows
-
-### Data Analysis
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-
-### Machine Learning
-- Scikit-Learn
+- Logistic Regression
+- Random Forest
 - XGBoost
 - LightGBM
-- SMOTE
+- K-Nearest Neighbors
 
-### MLOps
-- MLflow
-- DVC
+### ✅ Final Model Selected
+- **Model:** LightGBM  
+- **Dataset:** Balanced  
+- **F1 Score (Churned Class):** 0.90
 
-### Visualization
+---
+
+## 🛠️ Project Workflow
+
+![Workflow Diagram](Power%20BI%20Dashboard/Images/Flow%20Diagram.drawio.png)
+
+---
+
+## 🧪 Model Training & Tracking
+
+- Separate experiments: `Churn_Imbalanced` & `Churn_Balanced`
+- Tracked via MLflow:  
+  - Model performance metrics  
+  - Hyperparameters  
+  - Feature importance via LIME
+- Metrics: Precision, Recall, F1 for each class
+
+---
+
+## 📊 Visualizations
+
+### Churn Summary Dashboard
+![Churn Summary Dashboard](Power%20BI%20Dashboard/Images/Summary.png)
+
+### Churn Prediction Dashboard
+![Churn Prediction Dashboard](Power%20BI%20Dashboard/Images/Predictions.png)
+
+---
+
+## 📤 Prediction Output
+
+- Churn predictions made on `vw_JoinData`
+- Final output merged with original data for Power BI visualization
+- Exported to `data/test/Predictions.csv`
+
+---
+
+## 📦 Tech Stack
+
+- Python, Scikit-learn, XGBoost, LightGBM
+- Pandas, NumPy, Seaborn, Matplotlib
+- MLflow, LIME, DVC
+- SQL Server
 - Power BI
 
 ---
 
-## 📂 Project Deliverables
+## 📈 Result
 
-- SQL Data Extraction Layer
-- EDA Reports
-- Machine Learning Pipeline
-- Churn Prediction Engine
-- Explainability Reports (LIME)
-- Power BI Dashboards
-- Business Retention Recommendations
-
----
-
-## 📈 Impact
-
-This solution enables organizations to proactively identify customers likely to churn and implement targeted retention strategies, helping improve customer lifetime value, reduce revenue loss, and support data-driven business decisions
+With robust preprocessing and balancing techniques, **LightGBM** achieved the best performance on churn prediction. The predicted churners were integrated into a **Power BI** dashboard to support business decisions.
